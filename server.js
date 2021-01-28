@@ -16,9 +16,9 @@ const accessToken = oauth2Client.getAccessToken()
 const app = express()
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
-app.use(express.static('public'))
-app.get('/', (req, res) => res.send('./pubic/contactUs.html'))
-
+app.route("/").get(function (req, res) {
+    res.sendFile(process.cwd() + "/pubic/contactUs.html");
+  });
 
 app.post('/contact',(req,response)=>{
 const output=`
@@ -48,7 +48,7 @@ const mailOpts = {
   html:output,
   attachments: [{
   filename: 'email.png',
-  path:__dirname + './public/images/email.png',cid: 'email' //same cid value as in the html img src
+  path:__dirname + '/public/images/email.png',cid: 'email' //same cid value as in the html img src
   }]}
 smtpTrans.sendMail(mailOpts,(error,res)=>{
    if(error){
@@ -61,7 +61,7 @@ smtpTrans.sendMail(mailOpts,(error,res)=>{
   smtpTrans.close();
    })
 })
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 5000
 const server = app.listen(port,listening)
 function listening (){
   console.log(`server running on ${port}`)
