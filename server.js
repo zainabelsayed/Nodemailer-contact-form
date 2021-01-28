@@ -16,6 +16,7 @@ const accessToken = oauth2Client.getAccessToken()
 const app = express()
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
+app.use("/static", express.static('./static/'))
 app.route("/").get(function (req, res) {
     res.sendFile(process.cwd() + "/pubic/contactUs.html");
   });
@@ -48,7 +49,7 @@ const mailOpts = {
   html:output,
   attachments: [{
   filename: 'email.png',
-  path:__dirname + '/public/images/email.png',cid: 'email' //same cid value as in the html img src
+  path:__dirname + './static/images/email.png',cid: 'email' //same cid value as in the html img src
   }]}
 smtpTrans.sendMail(mailOpts,(error,res)=>{
    if(error){
