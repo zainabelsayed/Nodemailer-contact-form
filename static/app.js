@@ -21,7 +21,7 @@ function sendEmail(name, email,telephone, message) {
       message: message
     })
     };
-  return fetch("https://nodemailer-contact--form.herokuapp.com/contact", options)
+  return fetch("/contact", options)
     .then(res =>{
       if(res.status === 200){
         Swal.fire({

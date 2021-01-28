@@ -5,8 +5,8 @@ const { google } = require('googleapis')
 const OAuth2 = google.auth.OAuth2
 
 const oauth2Client = new OAuth2(
-    process.env.CLIENT_ID,
-    process.env.CLIENT_SECRET,
+    process.env.Client_ID,
+    process.env.Client_Secret,
     "https://developers.google.com/oauthplayground"
     )
 
@@ -37,15 +37,15 @@ const smtpTrans = nodemailer.createTransport({
   auth:{
   type:"OAuth2",
   user:process.env.GMAIL_USER,
-  clientId:process.env.CLIENT_ID,
-  clientSecret:process.env.CLIENT_SECRET,
-  refreshToken:process.env.REFRESH_TOKEN,
+  clientId:process.env.Client_ID,
+  clientSecret:process.env.Client_Secret,
+  refreshToken:process.env.Refresh_Token,
   accessToken:accessToken
   }})
 const mailOpts = {
   from:process.env.GMAIL_USER,
   to:process.env.RECIPIENT,
-  subject:'New message from contact form at masaplast.com',
+  subject:'New message from Nodemailer-contact-form',
   html:output,
   attachments: [{
   filename: 'email.png',
