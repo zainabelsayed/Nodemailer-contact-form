@@ -10,13 +10,15 @@ const oauth2Client = new OAuth2(
     "https://developers.google.com/oauthplayground"
     )
 
-oauth2Client.setCredentials({refresh_token:process.env.Refresh_Token})
+oauth2Client.setCredentials({
+    refresh_token:process.env.Refresh_Token
+})
 const accessToken = oauth2Client.getAccessToken()
 
 const app = express()
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
-app.use("/static", express.static('./static/'))
+app.use(express.static('public'))
 app.route("/").get(function (req, res) {
     res.sendFile(process.cwd() + "/public/contactUs.html");
   });
