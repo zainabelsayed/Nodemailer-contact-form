@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 app.use("/static", express.static('./static/'))
 app.route("/").get(function (req, res) {
-    res.sendFile(process.cwd() + "/pubic/contactUs.html");
+    res.sendFile(process.cwd() + "/public/contactUs.html");
   });
 
 app.post('/contact',(req,response)=>{
