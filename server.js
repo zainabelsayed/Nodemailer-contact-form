@@ -48,8 +48,8 @@ const mailOpts = {
   subject:'New message from Nodemailer-contact-form',
   html:output,
   attachments: [{
-  filename: 'email.png',
-  path:__dirname + './static/images/email.png',cid: 'email' //same cid value as in the html img src
+  filename: 'email.jpg',
+  path:__dirname + './static/images/email.jpg',cid: 'email' //same cid value as in the html img src
   }]}
 smtpTrans.sendMail(mailOpts,(error,res)=>{
    if(error){
@@ -59,7 +59,7 @@ smtpTrans.sendMail(mailOpts,(error,res)=>{
     console.log("Message sent: " + res.message);
     response.status(200).send(200)
     }
-  smtpTrans.close();
+  //smtpTrans.close();
    })
 })
 const port = process.env.PORT || 5000
