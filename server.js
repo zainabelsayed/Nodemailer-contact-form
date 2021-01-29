@@ -35,7 +35,9 @@ const output=`
   <li>Message: ${req.body.message}</li>
   </ul>`
 const smtpTrans = nodemailer.createTransport({
-  service:"gmail",
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
   auth:{
   type:"OAuth2",
   user:process.env.GMAIL_USER,
