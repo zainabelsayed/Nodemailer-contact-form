@@ -26,7 +26,6 @@ app.route("/").get(function (req, res) {
 app.post('/contact',(req,response)=>{
 const output=`
   <p>You have a new contact request</p>
-  <img class="email" src="cid:email" alt="email-image">
   <h3>Contact details</h3>
   <ul>
   <li>FirstName: ${req.body.name}</li>
@@ -51,10 +50,7 @@ const mailOpts = {
   to:process.env.RECIPIENT,
   subject:'New message from Nodemailer-contact-form',
   html:output,
-  attachments: [{
-  filename: 'email.jpg',
-  path:__dirname + './static/images/email.jpg',cid: 'email' //same cid value as in the html img src
-  }]}
+  }
 smtpTrans.sendMail(mailOpts,(error,res)=>{
    if(error){
    console.log(error);
